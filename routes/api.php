@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['api']], function () {
     Route::get('/wifi-spots', [App\Http\Controllers\Api\WifiSpotController::class, 'index']);
     Route::get('/wifi-spots/{wifi_spot}', [App\Http\Controllers\Api\WifiSpotController::class, 'show']);
+    Route::get('/restaurants', [App\Http\Controllers\Api\RestaurantController::class, 'index']);
+    Route::get('/restaurants/{restaurant}', [App\Http\Controllers\Api\RestaurantController::class, 'show']);
 });
