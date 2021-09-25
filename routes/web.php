@@ -28,3 +28,5 @@ Route::get('/sign-up', [
 Route::get('/top', [
     App\Http\Controllers\TopController::class, 'top'
 ]);
+
+Route::resource('wifi-spots', App\Http\Controllers\WifiSpotController::class);
