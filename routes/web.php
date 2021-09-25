@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
+
+Route::get('/login', [
+    App\Http\Controllers\LoginController::class, 'login'
+]);
+
+Route::get('/sign-up', [
+    App\Http\Controllers\SignUpController::class, 'signup'
+]);
+
+Route::get('/top', [
+    App\Http\Controllers\TopController::class, 'top'
+]);
+
+Route::resource('wifi-spots', App\Http\Controllers\WifiSpotController::class);
