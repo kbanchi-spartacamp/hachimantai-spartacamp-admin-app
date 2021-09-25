@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="border-bottom">
-        <h1 class="h2">Welcome to 八幡平スパルタキャンプ!!</h1>
+        <h1 class="h2">Top</h1>
     </div>
 @endsection
 
