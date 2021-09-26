@@ -24,6 +24,8 @@ class WifiSpotController extends Controller
         $wifispot->description = $request->description;
         $wifispot->image_url = $request->image_url;
         $wifispot->hp_url = $request->hp_url;
+        $wifispot->latitude = $request->latitude;
+        $wifispot->longitude = $request->longitude;
 
         $wifispot->save();
 
@@ -32,14 +34,31 @@ class WifiSpotController extends Controller
 
     public function create()
     {
-        return view('wifi-spots.create');
+        $latitude = 39.91402764039571;
+        $longitude = 141.1007601246386;
+        $zoom = 10;
+
+        $data = [
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
+        ];
+
+        return view('wifi-spots.create', $data);
     }
 
     public function show($id)
     {
         $wifispot = WifiSpot::find($id);
+        $latitude = $wifispot->latitude;
+        $longitude = $wifispot->longitude;
+        $zoom = 10;
+
         $data = [
             'wifispot' => $wifispot,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
         ];
         return view('wifi-spots.show', $data);
     }
@@ -52,6 +71,8 @@ class WifiSpotController extends Controller
         $wifispot->description = $request->description;
         $wifispot->image_url = $request->image_url;
         $wifispot->hp_url = $request->hp_url;
+        $wifispot->latitude = $request->latitude;
+        $wifispot->longitude = $request->longitude;
 
         $wifispot->save();
 
@@ -68,8 +89,15 @@ class WifiSpotController extends Controller
     public function edit($id)
     {
         $wifispot = WifiSpot::find($id);
+        $latitude = $wifispot->latitude;
+        $longitude = $wifispot->longitude;
+        $zoom = 10;
+
         $data = [
             'wifispot' => $wifispot,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
         ];
         return view('wifi-spots.edit', $data);
     }
