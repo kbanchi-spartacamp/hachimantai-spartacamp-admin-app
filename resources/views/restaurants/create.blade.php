@@ -21,10 +21,37 @@
             <input name="hp_url" type="text" id="hp_url" class="form-control" placeholder="Hp Url" required>
             <input type="submit" value="登録" class="btn btn-success">
             <a href="{{ route('restaurants.index') }}" class="btn btn-secondary">戻る</a>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
         </form>
+        <div id="map" style="height:50vh;"></div>
     </div>
 @endsection
 
 @include('layout.sidebar')
 
 @include('layout.footer')
+
+@section('script')
+    @include('partial.map')
+    <script>
+        const lat = document.getElementById('latitude');
+        const lng = document.getElementById('longitude');
+        let clicked;
+        map.on('click', function(e) {
+            if (clicked !== true) {
+                clicked = true;
+                const marker = L.marker([e.latlng['lat'], e.latlng['lng']], {
+                    draggable: true
+                }).addTo(map);
+                lat.value = e.latlng['lat'];
+                lng.value = e.latlng['lng'];
+                marker.on('dragend', function(e) {
+                    // 座標は、e.target.getLatLng()で取得
+                    lat.value = e.target.getLatLng()['lat'];
+                    lng.value = e.target.getLatLng()['lng'];
+                });
+            }
+        });
+    </script>
+@endsection

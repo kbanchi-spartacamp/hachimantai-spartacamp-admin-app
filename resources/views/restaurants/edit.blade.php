@@ -25,10 +25,33 @@
                 value="{{ $restaurant->hp_url }}">
             <input type="submit" value="更新" class="btn btn-primary">
             <a href="{{ route('restaurants.index') }}" class="btn btn-secondary">戻る</a>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
         </form>
+        <div id="map" style="height:50vh;"></div>
     </div>
 @endsection
 
 @include('layout.sidebar')
 
 @include('layout.footer')
+
+@section('script')
+    @include('partial.map')
+    <script>
+        const lat = document.getElementById('latitude');
+        const lng = document.getElementById('longitude');
+        @if (!empty($restaurant))
+            const marker = L.marker([{{ $restaurant->latitude }}, {{ $restaurant->longitude }}], {
+            draggable: true
+            }).bindPopup("{{ $restaurant->name }}", {closeButton: false}).addTo(map);
+            lat.value = {{ $restaurant->latitude }};
+            lng.value = {{ $restaurant->longitude }};
+            marker.on('dragend', function(e) {
+            // 座標は、e.target.getLatLng()で取得
+            lat.value = e.target.getLatLng()['lat'];
+            lng.value = e.target.getLatLng()['lng'];
+            });
+        @endif
+    </script>
+@endsection
