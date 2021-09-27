@@ -24,6 +24,8 @@ class RestaurantController extends Controller
         $restaurant->description = $request->description;
         $restaurant->image_url = $request->image_url;
         $restaurant->hp_url = $request->hp_url;
+        $restaurant->latitude = $request->latitude;
+        $restaurant->longitude = $request->longitude;
 
         $restaurant->save();
 
@@ -32,14 +34,30 @@ class RestaurantController extends Controller
 
     public function create()
     {
-        return view('restaurants.create');
+        $latitude = 39.91402764039571;
+        $longitude = 141.1007601246386;
+        $zoom = 10;
+
+        $data = [
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
+        ];
+
+        return view('restaurants.create', $data);
     }
 
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
+        $latitude = $restaurant->latitude;
+        $longitude = $restaurant->longitude;
+        $zoom = 10;
         $data = [
             'restaurant' => $restaurant,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
         ];
         return view('restaurants.show', $data);
     }
@@ -52,6 +70,8 @@ class RestaurantController extends Controller
         $restaurant->description = $request->description;
         $restaurant->image_url = $request->image_url;
         $restaurant->hp_url = $request->hp_url;
+        $restaurant->latitude = $request->latitude;
+        $restaurant->longitude = $request->longitude;
 
         $restaurant->save();
 
@@ -68,8 +88,15 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant::find($id);
+        $latitude = $restaurant->latitude;
+        $longitude = $restaurant->longitude;
+        $zoom = 10;
+
         $data = [
             'restaurant' => $restaurant,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'zoom' => $zoom,
         ];
         return view('restaurants.edit', $data);
     }

@@ -19,6 +19,8 @@ class CreateRestaurantsTable extends Migration
             $table->text('description');
             $table->text('image_url');
             $table->text('hp_url');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
         });
     }
