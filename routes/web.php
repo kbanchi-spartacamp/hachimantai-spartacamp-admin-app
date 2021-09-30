@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +29,20 @@ Route::get('/sign-up', [
 
 Route::get('/top', [
     App\Http\Controllers\TopController::class, 'top'
-]);
+])
+->middleware('auth');
 
-Route::resource('wifi-spots', App\Http\Controllers\WifiSpotController::class);
+Route::resource('wifi-spots', App\Http\Controllers\WifiSpotController::class)
+->middleware('auth');
 
-Route::resource('restaurants', App\Http\Controllers\RestaurantController::class);
+Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
+->middleware('auth');
 
-Route::resource('hot-springs', App\Http\Controllers\HotspringController::class);
+Route::resource('hot-springs', App\Http\Controllers\HotspringController::class)
+->middleware('auth');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
