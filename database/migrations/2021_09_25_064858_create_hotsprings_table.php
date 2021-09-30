@@ -19,7 +19,8 @@ class CreateHotspringsTable extends Migration
             $table->text('description');
             $table->text('image_url');
             $table->text('hp_url');
-            $table->text('map_url');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
         });
     }

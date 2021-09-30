@@ -32,3 +32,7 @@ Route::get('/top', [
 Route::resource('wifi-spots', App\Http\Controllers\WifiSpotController::class);
 
 Route::resource('restaurants', App\Http\Controllers\RestaurantController::class);
+
+Route::resource('hot-springs', App\Http\Controllers\HotspringController::class);
+
+

@@ -23,4 +23,6 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/wifi-spots/{wifi_spot}', [App\Http\Controllers\Api\WifiSpotController::class, 'show']);
     Route::get('/restaurants', [App\Http\Controllers\Api\RestaurantController::class, 'index']);
     Route::get('/restaurants/{restaurant}', [App\Http\Controllers\Api\RestaurantController::class, 'show']);
+    Route::get('/hot-springs', [App\Http\Controllers\Api\HotspringController::class, 'index']);
+    Route::get('/hot-springs/{hot_spring}', [App\Http\Controllers\Api\HotspringController::class, 'show']);
 });
