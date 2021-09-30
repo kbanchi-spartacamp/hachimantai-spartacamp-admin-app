@@ -5,6 +5,7 @@
             <span class="p-2 text-dark"></span>
         </nav>
         <form action="/logout" method="post">
+            @csrf
             <input class="btn text-light" type="submit" value="ログアウト" />
         </form>
     </header>
