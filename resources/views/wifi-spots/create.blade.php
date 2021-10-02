@@ -8,23 +8,36 @@
         <div class="border-bottom">
             <h1 class="h2">Wi-Fi スポット 登録</h1>
         </div>
-        <form action="{{ route('wifi-spots.store') }}" method="post">
+        <form action="{{ route('wifi-spots.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <label for="name" class="visually-hidden">Name</label>
-            <input name="name" type="text" id="name" class="form-control" placeholder="Name" required autofocus>
-            <label for="description" class="visually-hidden">Name</label>
-            <textarea name="description" id="description" cols="30" rows="10" class="form-control"
-                placeholder="Description" required></textarea>
-            <label for="image_url" class="visually-hidden">Name</label>
-            <input name="image_url" type="text" id="image_url" class="form-control" placeholder="Image Url" required>
-            <label for="hp_url" class="visually-hidden">Name</label>
-            <input name="hp_url" type="text" id="hp_url" class="form-control" placeholder="Hp Url" required>
+            <div class="form-group">
+                <label for="name" class="visually-hidden">Name</label>
+                <input name="name" type="text" id="name" class="form-control" placeholder="Name" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="description" class="visually-hidden">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control"
+                    placeholder="Description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image" class="visually-hidden">Image</label>
+                <input type="file" name="image" id="image" class="form-control" placeholder="Image" required
+                    onchange="previewImage(this);">
+                <img id="preview" style="max-width:200px;">
+            </div>
+            <div class="form-group">
+                <label for="hp_url" class="visually-hidden">Hp Url</label>
+                <input name="hp_url" type="text" id="hp_url" class="form-control" placeholder="Hp Url" required>
+            </div>
+            <div class="form-group">
+                <label for="map" class="visually-hidden">Map</label>
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+                <div id="map" style="height:50vh;"></div>
+            </div>
             <input type="submit" value="登録" class="btn btn-success">
             <a href="{{ route('wifi-spots.index') }}" class="btn btn-secondary">戻る</a>
-            <input type="hidden" name="latitude" id="latitude">
-            <input type="hidden" name="longitude" id="longitude">
         </form>
-        <div id="map" style="height:50vh;"></div>
     </div>
 @endsection
 
@@ -53,5 +66,14 @@
                 });
             }
         });
+    </script>
+    <script>
+        function previewImage(obj) {
+            var fileReader = new FileReader();
+            fileReader.onload = (function() {
+                document.getElementById('preview').src = fileReader.result;
+            });
+            fileReader.readAsDataURL(obj.files[0]);
+        }
     </script>
 @endsection

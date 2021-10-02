@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WifiSpot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WifiSpotController extends Controller
 {
@@ -18,11 +19,14 @@ class WifiSpotController extends Controller
 
     public function store(Request $request)
     {
+
+        $path = $request->file('image')->store('images', 'public');
+
         $wifispot = new WifiSpot();
 
         $wifispot->name = $request->name;
         $wifispot->description = $request->description;
-        $wifispot->image_url = $request->image_url;
+        $wifispot->image_url = $path;
         $wifispot->hp_url = $request->hp_url;
         $wifispot->latitude = $request->latitude;
         $wifispot->longitude = $request->longitude;
@@ -65,11 +69,14 @@ class WifiSpotController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $path = $request->file('image')->store('images', 'public');
+
         $wifispot = WifiSpot::find($id);
 
         $wifispot->name = $request->name;
         $wifispot->description = $request->description;
-        $wifispot->image_url = $request->image_url;
+        $wifispot->image_url = $path;
         $wifispot->hp_url = $request->hp_url;
         $wifispot->latitude = $request->latitude;
         $wifispot->longitude = $request->longitude;
