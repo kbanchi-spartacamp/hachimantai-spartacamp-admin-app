@@ -1,8 +1,8 @@
 @section('footer')
-    <footer id="footer" class="text-muted py-5">
+    <footer id="footer" class="my-5 pt-5 text-muted text-center text-small">
         <div class="container">
             <p class="float-end mb-1">
-                <a href="/top">Top</a>
+                Hachimantai Admin Web Application by @SupartaCamp
             </p>
         </div>
     </footer>

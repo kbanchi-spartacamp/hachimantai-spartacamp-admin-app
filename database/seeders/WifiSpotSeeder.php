@@ -18,7 +18,7 @@ class WifiSpotSeeder extends Seeder
             [
                 'name' => 'サラダファーム',
                 'description' => 'サラダファームです。美味しいソフトクリームが食べれます。店員さんが可愛いです。',
-                'image_url' => 'https://rurubu.jp/img_link/jti/SightImage/M/SI_80002904_121645.jpg',
+                'image_url' => 'images/sarada.jpeg',
                 'hp_url' => 'https://salad-farm.jp/',
                 'latitude' => '39.90799175531971',
                 'longitude' => '141.05471136881872',
@@ -28,7 +28,7 @@ class WifiSpotSeeder extends Seeder
             [
                 'name' => 'ノレグレット',
                 'description' => 'おしゃれそうなカフェ',
-                'image_url' => 'https://image.space.rakuten.co.jp/d/strg/ctrl/9/f243cdd37f2617ab10c7f06cd1249f912642f767.08.2.9.2.jpeg',
+                'image_url' => 'images/noreguret.jpeg',
                 'hp_url' => 'https://www.nollegretto.com/',
                 'latitude' => '39.9554496311578',
                 'longitude' => '141.0784019841643',
@@ -38,7 +38,7 @@ class WifiSpotSeeder extends Seeder
             [
                 'name' => '八幡平市役所結（ゆい）のひろば',
                 'description' => '心が落ち着けそなスペース',
-                'image_url' => 'http://www.sopnet.co.jp/wp/wp-content/uploads/2016/08/008_L7Z5634.jpg',
+                'image_url' => 'images/yui.jpeg',
                 'hp_url' => 'http://www.sopnet.co.jp/archives/projects/hachimantai-government-buildings',
                 'latitude' => '39.95683830673836',
                 'longitude' => '141.07119004183647',
@@ -48,7 +48,7 @@ class WifiSpotSeeder extends Seeder
             [
                 'name' => '大更駅待合室',
                 'description' => '起業家支援センターの目の前',
-                'image_url' => 'https://stat.ameba.jp/user_images/20190603/18/ttm123210/3a/26/j/o1024076814421681551.jpg',
+                'image_url' => 'images/oobukeeki.jpeg',
                 'hp_url' => 'https://www.jreast.co.jp/estation/stations/341.html',
                 'latitude' => '39.91402764039571',
                 'longitude' => '141.1007601246386',

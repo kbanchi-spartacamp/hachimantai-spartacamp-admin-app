@@ -12,7 +12,8 @@
             {{ $wifispot->description }}
         </div>
         <div>
-            <img src="{{ $wifispot->image_url }}" width="400px" height="400px">
+            <img src="{{ Storage::disk('public')->url($wifispot->image_url) }}" class="square-img" width="400px"
+                height="400px">
         </div>
         <div>
             <a href="{{ $wifispot->hp_url }}" class="btn btn-outline-secondary" target="_blank">公式HP</a>
