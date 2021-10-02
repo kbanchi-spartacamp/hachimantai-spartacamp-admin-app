@@ -8,9 +8,19 @@ use Illuminate\Support\Facades\Storage;
 
 class WifiSpotController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $wifispots = WifiSpot::all();
+
+        $name = $request->name;
+
+        $query = WifiSpot::query();
+        if (!empty($name)) {
+            $query->where('name', 'like', '%' . $name . '%');
+        }
+
+        $wifispots = $query->paginate(5);
+        $wifispots->appends(['name' => $name]);
+
         $data = [
             'wifispots' => $wifispots,
         ];
